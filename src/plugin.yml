@@ -1,0 +1,9 @@
+# This determines the command prefix when there are conflicts (/name:home, /name:help, etc.)
+name: ArrowLimiter
+main: com.ementalo.arrowlimiter.ArrowLimiter
+# Note to developers: This next line cannot change, or the automatic versioning system will break.
+version: 0.1
+website:
+description: Provides a way tp limit arrow spamt.
+commands:
+  
