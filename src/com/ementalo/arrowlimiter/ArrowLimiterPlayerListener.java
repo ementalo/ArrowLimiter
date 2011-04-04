@@ -24,7 +24,7 @@ public class ArrowLimiterPlayerListener extends PlayerListener
 
 		delay = arrLim.config.getDouble("arrows.timedelay", 0.1) * 1000D;
 		Player archer = event.getPlayer();
-		if (event.isCancelled() & event.getAction() != Action.RIGHT_CLICK_AIR|| event.hasBlock()  /* || arrLim.hasPermission("arrowlimiter.exempt", archer)*/) return;
+		if (event.isCancelled() & event.getAction() != Action.RIGHT_CLICK_AIR|| event.hasBlock() || arrLim.hasPermission("arrowlimiter.exempt", archer)) return;
 		{
 			if (event.getItem().getType() == Material.BOW && event.getPlayer().getInventory().contains(Material.ARROW))
 			{
