@@ -2,6 +2,6 @@ name: ArrowLimiter
 main: com.ementalo.arrowlimiter.ArrowLimiter
 version: 1.0
 website:
-description: Provides a way t limit arrow spam.
+description: Provides a way to limit arrow spam.
 commands:
   

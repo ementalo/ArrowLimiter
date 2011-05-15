@@ -21,7 +21,7 @@ public class ArrowLimiterEntityListener extends EntityListener
 	@Override
 	public void onEntityDamage(EntityDamageEvent event)
 	{
-		arrowDamage = arrLim.config.getInt("arrows.damage", 1);
+		arrowDamage = arrLim.config.getInt("damage", 1);
 		if(event instanceof EntityDamageByProjectileEvent)
 		{
 			EntityDamageByProjectileEvent edEvent = (EntityDamageByProjectileEvent)event;

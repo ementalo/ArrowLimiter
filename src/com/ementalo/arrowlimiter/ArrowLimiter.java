@@ -55,11 +55,11 @@ public class ArrowLimiter extends JavaPlugin
 	@Override
 	public void onLoad()
 	{
-
 	}
 
 	public void LoadSettings() throws Exception
-	{if (!this.getDataFolder().exists())
+	{
+		if (!this.getDataFolder().exists())
 		{
 			this.getDataFolder().mkdirs();
 		}
