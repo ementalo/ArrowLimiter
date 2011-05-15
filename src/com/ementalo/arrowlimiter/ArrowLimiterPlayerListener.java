@@ -21,7 +21,6 @@ public class ArrowLimiterPlayerListener extends PlayerListener
 	@Override
 	public void onPlayerInteract(PlayerInteractEvent event)
 	{
-
 		delay = arrLim.config.getDouble("arrows.timedelay", 0.1) * 1000D;
 		Player archer = event.getPlayer();
 		if (event.isCancelled() & event.getAction() != Action.RIGHT_CLICK_AIR|| event.hasBlock() || arrLim.hasPermission("arrowlimiter.exempt", archer)) return;
