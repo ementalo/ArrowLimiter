@@ -23,7 +23,7 @@ public class ArrowLimiterPlayerListener extends PlayerListener
 	{
 		delay = arrLim.config.getDouble("timedelay", 0.1) * 1000D;
 		Player archer = event.getPlayer();
-		if (event.isCancelled() & event.getAction() != Action.RIGHT_CLICK_AIR|| event.hasBlock() || arrLim.hasPermission("arrowlimiter.exempt", archer)) return;
+		if (event.isCancelled() || event.getAction() != Action.RIGHT_CLICK_AIR || event.hasBlock() || arrLim.hasPermission("arrowlimiter.exempt", archer)) return;
 		{
 			if (event.getItem().getType() == Material.BOW && event.getPlayer().getInventory().contains(Material.ARROW))
 			{
@@ -37,7 +37,17 @@ public class ArrowLimiterPlayerListener extends PlayerListener
 				arrLim.timeLimit.put(archer, now);
 				if (left > 0)
 				{
-					event.getPlayer().sendMessage("You have to wait " + delay / 1000D + " second(s) between arrows");
+					if (arrLim.config.getBoolean("showmsg", true))
+					{
+						if (arrLim.config.getString("custom-msg").isEmpty() || arrLim.config.getString("custom-msg") == null)
+						{
+							event.getPlayer().sendMessage("You have to wait " + delay / 1000D + " second(s) between arrows");
+						}
+						else
+						{
+							event.getPlayer().sendMessage(arrLim.config.getString("custom-msg"));
+						}
+					}
 					event.setCancelled(true);
 					event.getPlayer().updateInventory();
 					return;
