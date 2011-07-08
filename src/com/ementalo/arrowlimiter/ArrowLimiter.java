@@ -4,7 +4,6 @@ import com.nijikokun.bukkit.Permissions.Permissions;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.*;
-import org.anjocaido.groupmanager.GroupManager;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event.Priority;
@@ -26,7 +25,6 @@ public class ArrowLimiter extends JavaPlugin
 	public HashMap<Block, Double> dispenserLimit = new HashMap<Block, Double>();
 	public Object permissions = null;
 	Plugin permPlugin = null;
-	Boolean isGm = false;
 
 	@SuppressWarnings("LoggerStringConcat")
 	public void onEnable()
@@ -99,16 +97,8 @@ public class ArrowLimiter extends JavaPlugin
 			}
 			return false;
 		}
-		if (isGm)
-		{
-			GroupManager gm = (GroupManager)permPlugin;
-			return gm.getWorldsHolder().getWorldPermissions(base).has(base, node);
-		}
-		else
-		{
 			Permissions pm = (Permissions)permPlugin;
 			return pm.getHandler().has(base, node);
-		}
 	}
 
 	public Plugin getPermPlugin()

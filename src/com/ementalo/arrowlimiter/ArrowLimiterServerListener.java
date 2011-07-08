@@ -21,10 +21,9 @@ public class ArrowLimiterServerListener extends ServerListener
 		if (parent.permPlugin != null) return;
 
 		String pluginName = event.getPlugin().getDescription().getName();
-		if (pluginName.equalsIgnoreCase("GroupManager") || pluginName.equalsIgnoreCase("Permissions"))
+		if (pluginName.equalsIgnoreCase("Permissions"))
 		{
 			parent.setPermPlugin(event.getPlugin());
-			parent.isGm = pluginName.equalsIgnoreCase("GroupManager");
 			ArrowLimiter.logger.log(Level.INFO, "[ArrowLimiter] Found " + pluginName + ". Using it for permissions");
 		}
 	}
@@ -34,13 +33,7 @@ public class ArrowLimiterServerListener extends ServerListener
 	{
 		if (parent.permPlugin == null) return;
 		String pluginName = event.getPlugin().getDescription().getName();
-		String attachedName = parent.getPermPlugin().getDescription().getName();
-		if (pluginName.equalsIgnoreCase("GroupManager") && attachedName.equalsIgnoreCase("GroupManager"))
-		{
-			parent.setPermPlugin(null);
-			ArrowLimiter.logger.log(Level.INFO, "[ArrowLimiter] " + pluginName + " disabled, using OPS.txt");
-		}
-		if (pluginName.equalsIgnoreCase("Permissions") && attachedName.equalsIgnoreCase("Permissions"))
+		if (pluginName.equalsIgnoreCase("Permissions"))
 		{
 			parent.setPermPlugin(null);
 			ArrowLimiter.logger.log(Level.INFO, "[ArrowLimiter] " + pluginName + " disabled, using OPS.txt");
