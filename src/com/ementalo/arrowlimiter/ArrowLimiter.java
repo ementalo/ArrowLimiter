@@ -1,5 +1,6 @@
 package com.ementalo.arrowlimiter;
 
+import com.nijiko.permissions.PermissionHandler;
 import com.nijikokun.bukkit.Permissions.Permissions;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +24,7 @@ public class ArrowLimiter extends JavaPlugin
 	public Configuration config = null;
 	public HashMap<Player, Double> timeLimit = new HashMap<Player, Double>();
 	public HashMap<Block, Double> dispenserLimit = new HashMap<Block, Double>();
-	public Object permissions = null;
+	public static PermissionHandler permissionHandler = null;
 	Plugin permPlugin = null;
 
 	@SuppressWarnings("LoggerStringConcat")
@@ -97,8 +98,11 @@ public class ArrowLimiter extends JavaPlugin
 			}
 			return false;
 		}
-			Permissions pm = (Permissions)permPlugin;
-			return pm.getHandler().has(base, node);
+		if (permissionHandler == null)
+		{
+			permissionHandler = ((Permissions)permPlugin).getHandler();
+		}
+		return permissionHandler.has(base, node);
 	}
 
 	public Plugin getPermPlugin()
